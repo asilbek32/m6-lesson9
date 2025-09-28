@@ -6,6 +6,7 @@ import Contact from "../pages/contact";
 import Login from "../pages/auth/login";
 import UserPage from "../pages/user-page";
 import MainLAaout from "../componenets/main-layout";
+import Register from "../pages/auth/register";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/register",
+    element: <Register />,
+  },
+  {
     path: "/login",
     element: <Login />,
   },
@@ -47,4 +52,4 @@ const router = createBrowserRouter([
   },
 ]);
 
-export  {router}
+export { router };
