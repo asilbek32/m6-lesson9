@@ -12,8 +12,8 @@ function UserPage() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logout);
-    navigate("/login");
+    dispatch(logout());
+    navigate("/");
   };
 
   
