@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { logout } from "../../redux/user-slise";
 
 function UserPage() {
   const user = useSelector((state) => state.user.data);
   console.log(user);
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -16,10 +16,8 @@ function UserPage() {
     navigate("/");
   };
 
-  
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-blue-500">
       <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
         <div className="flex flex-col items-center">
           <img
@@ -44,12 +42,20 @@ function UserPage() {
           </div>
         </div>
 
-        <button
-          onClick={handleLogout}
-          className="mt-6 w-full px-6 py-2.5 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 transition"
-        >
-          Logout
-        </button>
+        <div className="flex gap-2">
+          <button
+            onClick={handleLogout}
+            className="mt-6 w-full px-6 py-2.5 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 transition"
+          >
+            Logout
+          </button>
+
+          <Link to={"/"}>
+            <button className="mt-6 w-full px-6 py-2.5 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition">
+              Home
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
