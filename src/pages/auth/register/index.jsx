@@ -7,25 +7,32 @@ function Register() {
   const passwordRef = useRef();
   const navigate = useNavigate();
 
-  const submit = async (e) => {
+  const submit = (e) => {
     e.preventDefault();
-    const data = {
+    const register = {
       name: nameRef.current.value,
       username: usernameRef.current.value,
       password: passwordRef.current.value,
       createdAt: Date.now,
     };
 
-    const res = await axios.post(
-      `https://68d91c8f90a75154f0d99101.mockapi.io/users`,
-      data
-    );
-    console.log(res.data);
+    axios({
+      url: `https://68d91c8f90a75154f0d99101.mockapi.io/users`,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: register,
+    })
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error));
+
     nameRef.current.value = "";
     usernameRef.current.value = "";
     passwordRef.current.value = "";
-    navigate("/login")
+    navigate("/login");
   };
+
   return (
     <div className="flex flex-col gap-6 shadow max-w-[70%] m-auto mt-[100px] p-3">
       <form onSubmit={submit} className="flex flex-col  items-center gap-4">

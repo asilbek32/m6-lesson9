@@ -19,6 +19,7 @@ function Header() {
         {data ? <Link to={"/user"}>{data.name}</Link> :<Link to={"/login"}>login</Link>}
       </div>
     </div>
+    
   );
 }
 
